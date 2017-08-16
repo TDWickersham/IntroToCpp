@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cmath>
 
 using namespace std;
 
@@ -68,6 +69,56 @@ int Pair(int a, int b)
 int SumNum(int a, int b, int c)
 {
 	return a + b + c;
+}
+
+
+int min(int a, int b)
+{
+	if (a > b)
+	{
+		return b;
+	}
+	else if (b > a)
+	{
+		return a;
+	}
+	else if (b = a)
+	{
+		return a;
+	}
+}
+
+int max(int a, int b)
+{
+	if (a > b)
+	{
+		return a;
+	}
+	else if (b > a)
+	{
+		return b;
+	}
+	else if (b = a)
+	{
+		return a;
+	}
+
+}
+
+int clamp(int a, int b, int c)
+{
+	if (c > a && c < b)
+	{
+		return c;
+	}
+	else if (c <= a)
+	{
+		return a;
+	}
+	else if (c >= b)
+	{
+		return b;
+	}
 }
 
 int main()
@@ -145,6 +196,57 @@ int main()
 	int y = SumNum(u, r, w);
 
 	cout << y << endl;
+
+	cout << endl;
+
+	int z;
+	int x;
+
+	cout << "I will tell you the min ";
+	cin >> z;
+	cout << endl;
+	cin >> x;
+	cout << endl;
+
+	int p = min(z, x);
+
+	cout << "The min is " << p << endl;
+
+	cout << endl;
+
+	int s;
+	int t;
+
+	cout << "I will now tell the max ";
+	cin >> s;
+	cout << endl;
+	cin >> t;
+	cout << endl;
+
+	int e = max(s, t);
+
+	cout << "the max is " << e << endl;
+
+	cout << endl;
+
+	int m;
+	int n;
+	int o;
+
+	cout << "now for the clamp ";
+	cin >> m;
+	cout << endl;
+	cin >> n;
+	cout << endl;
+	cin >> o;
+	cout << endl;
+
+	int p = clamp(m, n, o);
+
+	cout << p << endl;
+
+	cout << endl;
+
 
 	system("pause");
 }
