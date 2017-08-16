@@ -121,6 +121,20 @@ int clamp(int a, int b, int c)
 	}
 }
 
+float distance(float a, float b, float c, float d)
+{
+	float e = sqrt((a - c) * (a - c) + (b - d) * (b - d));
+
+	return e;
+}
+
+int ETA(int a, int b, int c, int d, int e)
+{
+	int f = sqrt((a - c) * (a - c) + (b - d) * (b - d)) / e;
+
+	return f;
+}
+
 int main()
 {
 	int a = 0;
@@ -184,7 +198,6 @@ int main()
 	cout << "It never ends ";
 	cin >> u;
 	cout << endl;
-
 	cout << "seriously ";
 	cin >> r;
 	cout << endl;
@@ -241,12 +254,50 @@ int main()
 	cin >> o;
 	cout << endl;
 
-	int p = clamp(m, n, o);
+	int h = clamp(m, n, o);
 
-	cout << p << endl;
+	cout << h << endl;
 
 	cout << endl;
 
+	float aa;
+	float bb;
+	float cc;
+	float dd;
+
+	cin >> aa;
+	cout << endl;
+	cin >> bb;
+	cout << endl;
+	cin >> cc;
+	cout << endl;
+	cin >> dd;
+	cout << endl;
+
+
+	float ee = distance(aa, bb, cc, dd);
+	cout << ee << endl;
+
+	int ff;
+	int gg;
+	int hh;
+	int ii;
+	int jj;
+
+	cin >> ff;
+	cout << endl;
+	cin >> gg;
+	cout << endl;
+	cin >> hh;
+	cout << endl;
+	cin >> ii;
+	cout << endl;
+	cin >> jj;
+	cout << endl;
+
+	int kk = ETA(ff, gg, hh, ii, jj);
+
+	cout << kk << endl;
 
 	system("pause");
 }
