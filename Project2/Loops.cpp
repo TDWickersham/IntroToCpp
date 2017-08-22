@@ -5,7 +5,7 @@ using namespace std;
 
 int main()
 {
-	/*int loop = -1;
+	int loop = -1;
 	while (loop < 9)
 	{
 		loop = loop++;
@@ -72,70 +72,70 @@ int main()
 		cout << g << endl;
 		g++;
 	} while (g < 2018);
-*/
-	//do
-	//{
-	//	int x;
 
-	//	cout << "What is your favorite positive number?" << endl;
-	//	cout << ">";
-	//	cin >> x;
-	//	if (x >= 0)
-	//	{
-	//		cout << "Okay, Your first number is " << x << "." << endl;
-	//		break;
-	//	}
-	//	else
-	//	{
-	//		cout << "That is not a positive number" << endl;
-	//		continue;
+	do
+	{
+		int x;
 
-	//	}
-	//} while (true);
-	//do{
-	//	int y;
-	//	cout << "Whats your second?" << endl;
-	//	cout << ">";
-	//	cin >> y;
-	//	if (y >= 0)
-	//	{
-	//		cout << "Your second favorite is " << y << endl;
-	//		break;
-	//	}
-	//	else
-	//	{
-	//		cout << "That isnt a positive number" << endl;
-	//	}
-	//} while (true);
+		cout << "What is your favorite positive number?" << endl;
+		cout << ">";
+		cin >> x;
+		if (x >= 0)
+		{
+			cout << "Okay, Your first number is " << x << "." << endl;
+			break;
+		}
+		else
+		{
+			cout << "That is not a positive number" << endl;
+			continue;
 
-	//do {
-	//	int z;
-	//	cout << "What is your third favorite?" << endl;
-	//	cout << ">";
-	//	cin >> z;
-	//	if (z >= 0)
-	//	{
-	//		cout << "Your final favorite is " << z << endl;
-	//		break;
-	//	}
-	//	else
-	//	{
-	//		cout << "that is not a positive number" << endl;
-	//		continue;
-	//	}
-	//} while (true);
+		}
+	} while (true);
+	do{
+		int y;
+		cout << "Whats your second?" << endl;
+		cout << ">";
+		cin >> y;
+		if (y >= 0)
+		{
+			cout << "Your second favorite is " << y << endl;
+			break;
+		}
+		else
+		{
+			cout << "That isnt a positive number" << endl;
+		}
+	} while (true);
 
-//int min;
-//int max;
-//cin >> min;
-//cout << endl;
-//cin >> max;
-//cout << endl;
-//while (min <= max)
-//{
-//	cout << min << endl;
-//	min++;
-//}
+	do {
+		int z;
+		cout << "What is your third favorite?" << endl;
+		cout << ">";
+		cin >> z;
+		if (z >= 0)
+		{
+			cout << "Your final favorite is " << z << endl;
+			break;
+		}
+		else
+		{
+			cout << "that is not a positive number" << endl;
+			continue;
+		}
+	} while (true);
+
+int min;
+int max;
+cin >> min;
+cout << endl;
+cin >> max;
+cout << endl;
+while (min <= max)
+{
+	cout << min << endl;
+	min++;
+}
 
 
 
