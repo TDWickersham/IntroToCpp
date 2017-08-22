@@ -58,6 +58,26 @@ int findIndex(int numbers[], int size, int value)
 	return -1;
 }
 
+bool arrayUniqueness(int numbers[], int size)
+{
+	bool match = true;
+	int setnum = 0;
+	int y = 0;
+	for (int i = 0; i < size; i++)
+	{
+		for (int x = 1; i + x < size; x++)
+		{
+			if (numbers[i] == numbers[i + x])
+			{
+				match = false;
+			}
+		}
+	}
+	return match;
+}
+
+
+
 int main()
 {
 	int values[]{1,2,3};
@@ -76,6 +96,10 @@ int main()
 	cout << largestValues(vals, nums) << endl;
 
 	cout << findIndex(vals, nums, value) << endl;
+
+	cout << arrayUniqueness(values, size) << endl;
+
+
 
 	system("pause");
 }
