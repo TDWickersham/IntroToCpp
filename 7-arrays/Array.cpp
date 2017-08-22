@@ -76,7 +76,48 @@ bool arrayUniqueness(int numbers[], int size)
 	return match;
 }
 
+void reverse(int num[], int size) 
+{
+	for (int i = 0; i < size / 2; ++i)
+	{
+		int temp = num[i];
 
+		num[i] = size - 1;
+
+		num[size - 1 - i] = temp;
+	}
+	printNumbers(num, size);
+}
+
+void sortAscend(int num[], int size)
+{
+
+	while (true)
+	{
+		bool isSorted = true;
+
+		for (int i = 0; i < size - 1; i++)
+		{
+			for (int j = 0; j < size - i - 1; j++)
+			{
+				if (num[j] > num[j + 1])
+				{
+					int temp = num[j];
+
+					num[j] = num[j + 1];
+					num[j + 1] = temp;
+
+					isSorted = false;
+				}
+			}
+			printNumbers(num, size);
+		}
+		if (isSorted)
+		{
+			break;
+		}
+	}
+}
 
 int main()
 {
@@ -99,7 +140,13 @@ int main()
 
 	cout << arrayUniqueness(values, size) << endl;
 
+	reverse(vals, nums);
+	
+	int num[]{ 2,5,8,1,7,3,6 };
+	int val = 7;
 
+
+	sortAscend(num, val);
 
 	system("pause");
 }
