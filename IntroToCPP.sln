@@ -19,6 +19,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "7-arrays", "7-arrays\7-arra
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "8-structures", "8-structures\8-structures.vcxproj", "{E39B77F9-CD60-4C7B-A512-8B0A191A9FED}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TheMaze", "TheMaze\TheMaze.vcxproj", "{B9F40AED-7B73-4AA9-ADF3-98EE9035FD52}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -91,6 +93,14 @@ Global
 		{E39B77F9-CD60-4C7B-A512-8B0A191A9FED}.Release|x64.Build.0 = Release|x64
 		{E39B77F9-CD60-4C7B-A512-8B0A191A9FED}.Release|x86.ActiveCfg = Release|Win32
 		{E39B77F9-CD60-4C7B-A512-8B0A191A9FED}.Release|x86.Build.0 = Release|Win32
+		{B9F40AED-7B73-4AA9-ADF3-98EE9035FD52}.Debug|x64.ActiveCfg = Debug|x64
+		{B9F40AED-7B73-4AA9-ADF3-98EE9035FD52}.Debug|x64.Build.0 = Debug|x64
+		{B9F40AED-7B73-4AA9-ADF3-98EE9035FD52}.Debug|x86.ActiveCfg = Debug|Win32
+		{B9F40AED-7B73-4AA9-ADF3-98EE9035FD52}.Debug|x86.Build.0 = Debug|Win32
+		{B9F40AED-7B73-4AA9-ADF3-98EE9035FD52}.Release|x64.ActiveCfg = Release|x64
+		{B9F40AED-7B73-4AA9-ADF3-98EE9035FD52}.Release|x64.Build.0 = Release|x64
+		{B9F40AED-7B73-4AA9-ADF3-98EE9035FD52}.Release|x86.ActiveCfg = Release|Win32
+		{B9F40AED-7B73-4AA9-ADF3-98EE9035FD52}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
