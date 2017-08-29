@@ -1,6 +1,12 @@
 #include <iostream>
+#include <Windows.h>
 
 using namespace std;
+
+void ColorPicker(int color)
+{
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color);
+}
 
 void start();
 void woods(bool &axe, bool &GameOver);
@@ -70,6 +76,7 @@ void start()
 
 	while (GameOver == false)
 	{
+		
 		char direction[50] = {};
 		bool dir = false;
 		bool axe = false;
@@ -80,6 +87,7 @@ void start()
 		bool GameOver = false;
 
 		while (dir == false) {
+			ColorPicker(7);
 			cout << endl;
 			cout << "You stand outside the door, three paths stretch out before you." << endl;
 			cout << "One path goes north, another goes west, and the last goes east." << endl;
@@ -123,6 +131,7 @@ void start()
 void woods(bool &axe, bool &GameOver)
 {
 	char action[50] = {};
+	ColorPicker(2);
 	cout << endl;
 	cout << "You have entered a clearing in the woods." << endl;
 	cout << "The smell of the fresh air and the feel of the soft grass calms you." << endl;
@@ -183,6 +192,7 @@ void woods(bool &axe, bool &GameOver)
 
 void cave(bool &axe, bool &ogre, bool &lantern, bool &key, bool &GameOver)
 {
+	ColorPicker(8);
 	char action[50] = {};
 	cout << endl;
 	cout << "You enter the mouth of a cave." << endl;
@@ -307,6 +317,7 @@ void cave(bool &axe, bool &ogre, bool &lantern, bool &key, bool &GameOver)
 
 void gate(bool &lantern, bool &key, bool &door, bool &GameOver)
 {
+	ColorPicker(3);
 	char action[50] = {};
 	cout << endl;
 	cout << "You walk up to a wall, 50 feet high." << endl;
@@ -395,6 +406,7 @@ void gate(bool &lantern, bool &key, bool &door, bool &GameOver)
 
 void dead(bool &GameOver)
 {
+	ColorPicker(12);
 	char choice;
 	cout << "You are now dead and have failed the test" << endl;
 	cout << "Do you wish to try again?" << endl;
@@ -419,6 +431,7 @@ void dead(bool &GameOver)
 
 void victory(bool &GameOver)
 {
+	ColorPicker(15);
 	char choice;
 	cout << "You have solved the maze, although this would only be the beginning," << endl;
 	cout << "This puzzle is the end for now. I hope you enjoyed." << endl;
@@ -435,3 +448,4 @@ void victory(bool &GameOver)
 		exit(0);
 	}
 }
+
