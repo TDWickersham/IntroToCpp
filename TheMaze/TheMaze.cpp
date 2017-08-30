@@ -5,7 +5,7 @@ using namespace std;
 
 void ColorPicker(int color)
 {
-	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color);
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color); // allows the changing of text color
 }
 
 void start();
@@ -219,8 +219,8 @@ void cave(bool &GameOver, bool &axe, bool &ogre, bool &lantern, bool &key, bool 
 		cout << "Its body lays off to the side" << endl;
 		system("pause");
 	}
-
-	cout << "The path back heads west and there is a very dark space just visible past the ogre" << endl;
+	cout << "There is a very dark space just visible past the ogre" << endl;
+	cout << "The path back heads west " << endl;
 	
 	bool act = false;
 	while (act == false)
@@ -456,7 +456,7 @@ void gate(bool &GameOver, bool &axe, bool &ogre, bool &lantern, bool &key, bool 
 
 }
 
-void dead(bool &GameOver, bool &axe, bool &ogre, bool &lantern, bool &key, bool &door)
+void dead(bool &GameOver, bool &axe, bool &ogre, bool &lantern, bool &key, bool &door) // resets the players progress or exits the game depending on player choice
 {
 	ColorPicker(12); // changes color to bright red
 	char choice;
@@ -481,12 +481,12 @@ void dead(bool &GameOver, bool &axe, bool &ogre, bool &lantern, bool &key, bool 
 		// { continue; for yes 
 		//   break; for no
 		//}
-		exit(0);
+		exit(0); // closes the program
 	}
 
 }
 
-void victory(bool &GameOver, bool &axe, bool &ogre, bool &lantern, bool &key, bool &door)
+void victory(bool &GameOver, bool &axe, bool &ogre, bool &lantern, bool &key, bool &door) // tells the player they won and resets the game
 {
 	ColorPicker(15); //changes color to bright white
 	char choice;
@@ -508,7 +508,7 @@ void victory(bool &GameOver, bool &axe, bool &ogre, bool &lantern, bool &key, bo
 	else
 	{
 		GameOver = false;
-		exit(0);
+		exit(0); // closes the program
 	}
 }
 
