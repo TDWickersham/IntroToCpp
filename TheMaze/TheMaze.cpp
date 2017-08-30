@@ -9,11 +9,11 @@ void ColorPicker(int color)
 }
 
 void start();
-void woods(bool &axe, bool &GameOver);
-void gate(bool &lantern, bool &key, bool &door, bool &GameOver);
-void cave(bool &axe, bool &ogre, bool &lantern, bool &key, bool &GameOver);
-void dead(bool &GameOver);
-void victory(bool &GameOver);
+void woods(bool &GameOver, bool &axe, bool &ogre, bool &lantern, bool &key, bool &door);
+void gate(bool &GameOver, bool &axe, bool &ogre, bool &lantern, bool &key, bool &door);
+void cave(bool &GameOver, bool &axe, bool &ogre, bool &lantern, bool &key, bool &door);
+void dead(bool &GameOver, bool &axe, bool &ogre, bool &lantern, bool &key, bool &door);
+void victory(bool &GameOver, bool &axe, bool &ogre, bool &lantern, bool &key, bool &door);
 
 void main()
 {
@@ -77,7 +77,7 @@ void start()
 	while (GameOver == false)
 	{
 		
-		char direction[50] = {};
+		char direction[50] = {}; // gives you a character limit to what you put in
 		bool dir = false;
 		bool axe = false;
 		bool ogre = true;
@@ -87,22 +87,22 @@ void start()
 		bool GameOver = false;
 
 		while (dir == false) {
-			ColorPicker(7);
+			ColorPicker(7); // changes the text color to white when you get to this
 			cout << endl;
 			cout << "You stand outside the door, three paths stretch out before you." << endl;
 			cout << "One path goes north, another goes west, and the last goes east." << endl;
-			cout << "(In order to move you enter directions such as 'goeast'.)" << endl;
+			cout << "(In order to move you enter directions such as 'goeast'. Use your wit)" << endl; // this is to help you learn the controls
 			cin >> direction;
 
 
 
 			if (strcmp(direction, "gonorth") == 0)
 			{
-				gate(lantern, key, door, GameOver);
+				gate(GameOver, axe, ogre, lantern, key, door);
 			}
 			else if (strcmp(direction, "goeast") == 0)
 			{
-				cave(axe, ogre, lantern, key, GameOver);
+				cave(GameOver, axe, ogre, lantern, key, door);
 				if (GameOver == true)
 				{
 					continue;
@@ -110,12 +110,18 @@ void start()
 			}
 			else if (strcmp(direction, "gowest") == 0)
 			{
-				woods(axe, GameOver);
+				woods(GameOver, axe, ogre, lantern, key, door);
 			}
 			else if (strcmp(direction, "lookaround") == 0)
 			{
 				cout << "the door behind you sits in a blank white wall" << endl;
 				cout << "the path below you stretches off in three directions" << endl;
+				continue;
+			}
+			else if (strcmp(direction, "trydoor") == 0 || strcmp(direction, "opendoor") == 0)
+			{
+				cout << "I cant open that, it was locked behind me." << endl;
+				cout << "The only thing i can do is press on" << endl;
 				continue;
 			}
 			else
@@ -128,14 +134,14 @@ void start()
 }
 
 
-void woods(bool &axe, bool &GameOver)
+void woods(bool &GameOver, bool &axe, bool &ogre, bool &lantern, bool &key, bool &door)
 {
 	char action[50] = {};
-	ColorPicker(2);
+	ColorPicker(2); // changes text color to green
 	cout << endl;
 	cout << "You have entered a clearing in the woods." << endl;
 	cout << "The smell of the fresh air and the feel of the soft grass calms you." << endl;
-	if (axe == false)
+	if (axe == false) // checks to see if you have the axe or not
 	{
 		cout << "A stump sits with an axe sticking out of it." << endl;
 	}
@@ -151,13 +157,13 @@ void woods(bool &axe, bool &GameOver)
 
 		cin >> action;
 
-		if (strcmp(action, "getaxe") == 0 && axe == false)
+		if (strcmp(action, "getaxe") == 0 && axe == false || strcmp(action, "grabaxe") == 0 && axe == false || strcmp(action, "takeaxe") == 0 && axe == false)
 		{
-			cout << "You pick up the axe";
+			cout << "You pick up the axe" << endl;;
 			axe = true;
 			continue;
 		}
-		else if (strcmp(action, "getaxe") == 0 && axe == true)
+		else if (strcmp(action, "getaxe") == 0 && axe == true || strcmp(action, "grabaxe") == 0 && axe == true || strcmp(action, "takeaxe") == 0 && axe == true)
 		{
 			cout << "You already have that" << endl;
 			continue;
@@ -180,7 +186,13 @@ void woods(bool &axe, bool &GameOver)
 			cout << endl;
 			cout << "You entered a wolves nest, and they attack" << endl;
 			cout << "You are unable to escape them" << endl;
-			dead(GameOver);
+			dead(GameOver, axe, ogre, lantern, key, door);
+			if (GameOver == true)
+			{
+				//return;
+				break;
+			}
+
 		}
 		else
 		{
@@ -190,7 +202,7 @@ void woods(bool &axe, bool &GameOver)
 	}
 }
 
-void cave(bool &axe, bool &ogre, bool &lantern, bool &key, bool &GameOver)
+void cave(bool &GameOver, bool &axe, bool &ogre, bool &lantern, bool &key, bool &door)
 {
 	ColorPicker(8);
 	char action[50] = {};
@@ -208,7 +220,7 @@ void cave(bool &axe, bool &ogre, bool &lantern, bool &key, bool &GameOver)
 		system("pause");
 	}
 
-	cout << "The path back heads west and the path forward heads east" << endl;
+	cout << "The path back heads west and there is a very dark space just visible past the ogre" << endl;
 	
 	bool act = false;
 	while (act == false)
@@ -252,16 +264,31 @@ void cave(bool &axe, bool &ogre, bool &lantern, bool &key, bool &GameOver)
 			cout << "Its already dead" << endl;
 			continue;
 		}
+		else if (strcmp(action, "uselanternon ogre") == 0 && lantern == true)
+		{
+			cout << "Why would i use this like that?" << endl;
+			cout << "Ill need this lantern later" << endl;
+			continue;
+		}
+		else if (strcmp(action, "attackogre") == 0 && ogre == true)
+		{
+			cout << "You strike at the ogre with your hands" << endl;
+			cout << "all that your pathetic attacks do is awaken and enrage the ogre" << endl;
+			cout << "You get crushed under its fist" << endl;
+			dead(GameOver, axe, ogre, lantern, key, door);
+
+
+		}
 		else if (strcmp(action, "lightlantern") == 0 && ogre == true)
 		{
 			cout << endl;
 			cout << "The oger awakens and smashes you into the ground." << endl;
 			cout << "You have died." << endl;
 			system("pause");
-			dead(GameOver);
+			dead(GameOver, axe, ogre, lantern, key, door);
 			if (GameOver == true)
 			{
-				return;
+				//return;
 				break;
 			}
 			
@@ -271,10 +298,10 @@ void cave(bool &axe, bool &ogre, bool &lantern, bool &key, bool &GameOver)
 			cout << "The ogre awakens, hitting you with the back of its massive hand" << endl;
 			cout << "You are sent flying into a cave wall, getting knocked unconcious" << endl;
 			cout << "You later awaken a few moments before you are made into the ogres next meal" << endl;
-			dead(GameOver);
+			dead(GameOver, axe, ogre, lantern, key, door);
 			if (GameOver == true)
 			{
-				return;
+				//return;
 				break;
 			}
 		}
@@ -305,7 +332,11 @@ void cave(bool &axe, bool &ogre, bool &lantern, bool &key, bool &GameOver)
 			cout << "Bones from what you can only assume to be previous test takers line the floor" << endl;
 			continue;
 		}
-
+		else if (strcmp(action, "goeast") == 0 && ogre == false || strcmp(action, "gonorth") == 0 && ogre == false || strcmp(action, "gonorth") == 0 && ogre == false)
+		{
+			cout << "There is no path this way. I might be able to see better if i had a light." << endl;
+			continue;
+		}
 		else
 		{
 			cout << "I cant do that" << endl;
@@ -315,7 +346,7 @@ void cave(bool &axe, bool &ogre, bool &lantern, bool &key, bool &GameOver)
 
 }
 
-void gate(bool &lantern, bool &key, bool &door, bool &GameOver)
+void gate(bool &GameOver, bool &axe, bool &ogre, bool &lantern, bool &key, bool &door)
 {
 	ColorPicker(3);
 	char action[50] = {};
@@ -336,7 +367,7 @@ void gate(bool &lantern, bool &key, bool &door, bool &GameOver)
 	{
 		cout << "What would you like to do?" << endl;
 		cin >> action;
-		if (strcmp(action, "checkbushes") == 0)
+		if (strcmp(action, "checkbushes") == 0 && lantern == false || strcmp(action, "goleft") == 0 && lantern == false || strcmp(action, "lookinbushes") == 0 && lantern == false)
 		{
 			cout << "A lantern sits nestled in its branches. You take it." << endl;
 			lantern = true;
@@ -347,7 +378,7 @@ void gate(bool &lantern, bool &key, bool &door, bool &GameOver)
 			cout << "I cant open that yet." << endl;
 			continue;
 		}
-		else if (strcmp(action, "opengate") == 0 && key == true)
+		else if (strcmp(action, "opengate") == 0 && key == true && door == false || strcmp(action, "usekeyongate") == 0 && key == true && door == false)
 		{
 			cout << "The gate opens and the path north opens up." << endl;
 			door = true;
@@ -361,13 +392,34 @@ void gate(bool &lantern, bool &key, bool &door, bool &GameOver)
 		else if (strcmp(action, "gonorth") == 0 && door == true)
 		{
 			cout << "You walk to the goal." << endl;
-			victory(GameOver);
+			victory(GameOver, axe, ogre, lantern, key, door);
 			if (GameOver == true)
 			{
-				return;
+				//return;
 				break;
 			}
 
+		}
+		else if (strcmp(action, "usekey") == 0 && key == true)
+		{
+			cout << "On what?" << endl;
+			cin >> action;
+			if (strcmp(action, "ongate") == 0 && door == false)
+			{
+				cout << "The gate opens up and the path ahead is available" << endl;
+				continue;
+			}
+			else
+			{
+				cout << "Why would i use it there?" << endl;
+				continue;
+			}
+		}
+		else if (strcmp(action, "lightlantern") == 0 && lantern == true)
+		{
+			cout << "why would i light this here its broad day light" << endl;
+			cout << endl;
+			continue;
 		}
 		else if (strcmp(action, "gosouth") == 0)
 		{
@@ -378,10 +430,10 @@ void gate(bool &lantern, bool &key, bool &door, bool &GameOver)
 		{
 			cout << "You attempt to climb the wall however the handholds are unstable" << endl;
 			cout << "They break and you fall, hitting your head on the stone path below" << endl;
-			dead(GameOver);
+			dead(GameOver, axe, ogre, lantern, key, door);
 			if (GameOver == true)
 			{
-				return;
+				//return;
 				break;
 			}
 		}
@@ -404,15 +456,20 @@ void gate(bool &lantern, bool &key, bool &door, bool &GameOver)
 
 }
 
-void dead(bool &GameOver)
+void dead(bool &GameOver, bool &axe, bool &ogre, bool &lantern, bool &key, bool &door)
 {
-	ColorPicker(12);
+	ColorPicker(12); // changes color to bright red
 	char choice;
 	cout << "You are now dead and have failed the test" << endl;
 	cout << "Do you wish to try again?" << endl;
 	cin >> choice;
 	if (choice == 'y' || choice == 'Y')
 	{
+		 axe = false;
+		 ogre = true;
+		 lantern = false;
+		 key = false;
+		 door = false;
 		GameOver = true;
 	}
 	else
@@ -429,9 +486,9 @@ void dead(bool &GameOver)
 
 }
 
-void victory(bool &GameOver)
+void victory(bool &GameOver, bool &axe, bool &ogre, bool &lantern, bool &key, bool &door)
 {
-	ColorPicker(15);
+	ColorPicker(15); //changes color to bright white
 	char choice;
 	cout << "You have solved the maze, although this would only be the beginning," << endl;
 	cout << "This puzzle is the end for now. I hope you enjoyed." << endl;
@@ -440,6 +497,12 @@ void victory(bool &GameOver)
 	cin >> choice;
 	if (choice == 'y' || choice == 'Y')
 	{
+		bool axe = false;
+		bool ogre = true;
+		bool lantern = false;
+		bool key = false;
+		bool door = false;
+		bool GameOver = false;
 		GameOver = true;
 	}
 	else
