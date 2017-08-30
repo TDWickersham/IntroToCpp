@@ -21,12 +21,11 @@ void main()
 		char answer;
 		bool GameOver = false;
 		bool hasAxe = false;
-
 		bool forward = false;
 		while (forward == false)
 		{
 			cout << "Welcome to the maze: do you wish to play?" << endl;
-			cout << "Y/N: ";
+			cout << "Y/N: "; //gives you the choice to play
 			cin >> answer;
 
 			if (answer == 'y' || answer == 'Y')
@@ -34,7 +33,7 @@ void main()
 				cout << "Welcome" << endl;
 				break;
 			}
-			else if (answer == 'n' || answer == 'N')
+			else if (answer == 'n' || answer == 'N') //takes you out if you choose no
 			{
 				cout << "Goodbye" << endl;
 				system("pause");
@@ -58,7 +57,7 @@ void main()
 
 
 		cout << endl;
-		system("pause");
+		system("pause"); // pauses to allow the player to catch up with the story points
 		cout << endl;
 
 		start();
@@ -91,7 +90,8 @@ void start()
 			cout << endl;
 			cout << "You stand outside the door, three paths stretch out before you." << endl;
 			cout << "One path goes north, another goes west, and the last goes east." << endl;
-			cout << "(In order to move you enter directions such as 'goeast'. Use your wit)" << endl; // this is to help you learn the controls
+			cout << "(In order to move you enter directions such as 'goeast'.)" << endl; // this is to help you learn the controls
+			cout << "(Use your wit, there is a variety of commands)" << endl;
 			cin >> direction;
 
 
@@ -126,7 +126,7 @@ void start()
 			}
 			else
 			{
-				cout << "That is not possible, try again." << endl;
+				cout << "I cant do that, try again." << endl;
 				continue;
 			}
 		}
@@ -209,7 +209,7 @@ void cave(bool &GameOver, bool &axe, bool &ogre, bool &lantern, bool &key, bool 
 	cout << endl;
 	cout << "You enter the mouth of a cave." << endl;
 	cout << "In the dim light you see the dark shape of an oger" << endl;
-	if (ogre == true)
+	if (ogre == true) //checks to see if ogre is alive and changes the descriptor accordingly
 	{
 		cout << "Its sleeping body blocks the path" << endl;
 		system("pause");
@@ -246,6 +246,14 @@ void cave(bool &GameOver, bool &axe, bool &ogre, bool &lantern, bool &key, bool 
 			{
 				cout << "It is already dead" << endl;
 				continue;
+			}
+			else if (strcmp(action, "ogre") == 0 && ogre == true)
+			{
+				cout << "You slay the ogre and move it aside" << endl;
+			}
+			else if (strcmp(action, "ogre") == 0 && ogre == false)
+			{
+				cout << "It is already dead" << endl;
 			}
 			else
 			{
@@ -354,7 +362,7 @@ void gate(bool &GameOver, bool &axe, bool &ogre, bool &lantern, bool &key, bool 
 	cout << "You walk up to a wall, 50 feet high." << endl;
 	cout << "It has a gate in it with bars too close together to slip through" << endl;
 	cout << "The goal is visible on the other side." << endl;
-	if (lantern == false)
+	if (lantern == false) // checks if you have lantern or not
 	{
 		cout << "There is a glint in the bushes to your left." << endl;
 	}
