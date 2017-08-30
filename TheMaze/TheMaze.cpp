@@ -91,7 +91,7 @@ void start()
 			cout << endl;
 			cout << "You stand outside the door, three paths stretch out before you." << endl;
 			cout << "One path goes north, another goes west, and the last goes east." << endl;
-			cout << "(In order to move you enter directions such as 'go east'.)" << endl;
+			cout << "(In order to move you enter directions such as 'goeast'.)" << endl;
 			cin >> direction;
 
 
