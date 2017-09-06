@@ -124,6 +124,12 @@ void start()
 				cout << "The only thing i can do is press on" << endl;
 				continue;
 			}
+			else if (strcmp(direction, "gosouth") == 0)
+			{
+				cout << "I cant, the door is to my back." << endl;
+				cout << "I had literally just come through it to be here" << endl;
+				continue;
+			}
 			else
 			{
 				cout << "I cant do that, try again." << endl;
@@ -181,7 +187,7 @@ void woods(bool &GameOver, bool &axe, bool &ogre, bool &lantern, bool &key, bool
 			cout << "The scent of the forest and the grass tickle your nose" << endl;
 			continue;
 		}
-		else if (strcmp(action, "gowest") == 0 || strcmp(action, "gosouth") == 0 || strcmp(action, "gonorth") == 0)
+		else if (strcmp(action, "gowest") == 0)
 		{
 			cout << endl;
 			cout << "You entered a wolves nest, and they attack" << endl;
@@ -193,6 +199,33 @@ void woods(bool &GameOver, bool &axe, bool &ogre, bool &lantern, bool &key, bool
 				break;
 			}
 
+		}
+		else if (strcmp(action, "gosouth") == 0)
+		{
+			cout << endl;
+			cout << "You stumble into a giant wasps nest" << endl;
+			cout << "They are agrevated that there is a trespassor" << endl;
+			cout << "You are repeatedly stung to death" << endl;
+			dead(GameOver, axe, ogre, lantern, key, door);
+			if (GameOver == true)
+			{
+				//return;
+				break;
+			}
+		}
+		else if (strcmp(action, "gonorth") == 0)
+		{
+			cout << endl;
+			cout << "You trip on a root while walking down hill" << endl;
+			cout << "You end up rolling off the edge of a cliff" << endl;
+			cout << "You contemplate the reason why you were even exploring over this way" << endl;
+			cout << "The ground rushes up to meet you" << endl;
+			dead(GameOver, axe, ogre, lantern, key, door);
+			if (GameOver == true)
+			{
+				//return;
+				break;
+			}
 		}
 		else
 		{
@@ -250,6 +283,8 @@ void cave(bool &GameOver, bool &axe, bool &ogre, bool &lantern, bool &key, bool 
 			else if (strcmp(action, "ogre") == 0 && ogre == true)
 			{
 				cout << "You slay the ogre and move it aside" << endl;
+				ogre = false;
+				continue;
 			}
 			else if (strcmp(action, "ogre") == 0 && ogre == false)
 			{
@@ -272,7 +307,7 @@ void cave(bool &GameOver, bool &axe, bool &ogre, bool &lantern, bool &key, bool 
 			cout << "Its already dead" << endl;
 			continue;
 		}
-		else if (strcmp(action, "uselanternon ogre") == 0 && lantern == true)
+		else if (strcmp(action, "uselanternonogre") == 0 && lantern == true)
 		{
 			cout << "Why would i use this like that?" << endl;
 			cout << "Ill need this lantern later" << endl;
@@ -379,6 +414,11 @@ void gate(bool &GameOver, bool &axe, bool &ogre, bool &lantern, bool &key, bool 
 		{
 			cout << "A lantern sits nestled in its branches. You take it." << endl;
 			lantern = true;
+			continue;
+		}
+		if (strcmp(action, "checkbushes") == 0 && lantern == true || strcmp(action, "goleft") == 0 && lantern == true || strcmp(action, "lookinbushes") == 0 && lantern == true)
+		{
+			cout << "You admire the leaves of the bush, the branches, the sound as they rustle" << endl;
 			continue;
 		}
 		else if (strcmp(action, "opengate") == 0 && key == false)
